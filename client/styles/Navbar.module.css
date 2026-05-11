@@ -1,0 +1,53 @@
+.navbar{
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    background: #ffffff;
+}
+
+.logo{
+    vertical-align: top; 
+    display: inline-block;
+    object-fit: cover;
+    margin-top: 14px;
+}
+
+.navlinks{
+    width: 500px;
+    margin-top: 4px;
+    margin-right: 80px;
+}
+.navlist{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+}
+.navlist li{
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+ }
+
+.githubbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #111827;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    height: 35px;
+    padding: 0 10px;
+    margin-top: 13px;
+}
+
+.icon{
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
+}
