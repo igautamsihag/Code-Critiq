@@ -20,9 +20,11 @@ Monorepo — `client/` is the Next.js frontend; backend to be added alongside it
 Run from `client/`:
 
 ```bash
-npm run dev      # http://localhost:3000
+npm run dev        # http://localhost:3000
 npm run build
 npm run lint
+npm test           # run all tests once
+npm run test:watch # watch mode during development
 ```
 
 ## Conventions
@@ -41,6 +43,19 @@ In `client/.env.local` (never committed):
 
 - `NEXT_PUBLIC_GITHUB_CLIENT_ID` — GitHub OAuth App client ID
 
+## Testing
+
+- Framework: Jest + React Testing Library
+- Test files live in `client/__tests__/`, mirroring the source structure:
+  - `__tests__/components/` for component tests
+  - `__tests__/app/` for page tests
+- Configuration: `client/jest.config.ts` (uses `next/jest.js` preset)
+- Setup file: `client/jest.setup.ts` (loads `@testing-library/jest-dom` matchers)
+- Mocks: `client/__mocks__/next/image.tsx` — replaces `next/image` with a plain `<img>` for assertability
+- `next/jest.js` handles CSS Modules automatically (identity proxy)
+- Write assertion-based tests only — no snapshots
+- Only test critical, user-facing behaviour; skip boilerplate rendering
+
 ## CI
 
-`.github/workflows/client-ci.yml` — triggers on push/PR to `main` and `develop`. Two sequential jobs: `lint` → `build`, both running from `client/`.
+`.github/workflows/client-ci.yml` — triggers on push/PR to `develop` and PR to `main`. Three sequential jobs: `lint` → `test` → `build`, all running from `client/`.
