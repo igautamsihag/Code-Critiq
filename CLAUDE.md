@@ -58,4 +58,13 @@ In `client/.env.local` (never committed):
 
 ## CI
 
-`.github/workflows/client-ci.yml` — triggers on push/PR to `develop` and PR to `main`. Three sequential jobs: `lint` → `test` → `build`, all running from `client/`.
+`.github/workflows/client-ci.yml` — triggers on push to `develop` and `main`, and PRs to `develop` and `main`. Three sequential jobs: `lint` → `test` → `build`, all running from `client/`.
+
+## CD
+
+`.github/workflows/client-cd.yml` — triggers via `workflow_run` when CI completes successfully on `main`. Deploys to Vercel using `amondnet/vercel-action@v25` with `--prod` flag.
+
+- Runs under the `production` GitHub Environment, restricted to the `main` branch
+- Required GitHub repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
+- `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` can be found in `client/.vercel/project.json` (not committed)
+- Vercel handles the build on its own infrastructure — no local build step in the workflow
