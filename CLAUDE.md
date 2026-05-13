@@ -62,7 +62,7 @@ In `client/.env.local` (never committed):
 
 ## CD
 
-`.github/workflows/client-cd.yml` — triggers via `workflow_run` when CI completes successfully on `main`. Deploys to Vercel using `amondnet/vercel-action@v25` with `--prod` flag.
+`.github/workflows/client-cd.yml` — triggers via `workflow_run` when CI completes successfully on `main`. Deploys to Vercel using `npx vercel@latest --prod` directly (avoids third-party action version lag).
 
 - Runs under the `production` GitHub Environment, restricted to the `main` branch
 - Required GitHub repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
