@@ -14,7 +14,7 @@ Automated pull request reviewer. Connects to your GitHub account and delivers co
 
 ## Overview
 
-Code Critiq streamlines the code review process by analyzing pull requests and generating actionable feedback — catching bugs, flagging anti-patterns, and suggesting improvements — so human reviewers can focus on higher-level decisions.
+Code Critiq streamlines the code review process by analyzing pull requests and generating actionable feedback including catching bugs, flagging anti-patterns, and suggesting improvements so that human reviewers can focus on higher-level decisions.
 
 ---
 

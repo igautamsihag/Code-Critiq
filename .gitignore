@@ -47,7 +47,15 @@ Thumbs.db
 # deployment
 .vercel/
 
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
 # secrets / certs
 *.pem
 *.key
 *.cert
+
+CLAUDE.md
