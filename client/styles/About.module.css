@@ -1,0 +1,182 @@
+/* ── Container ───────────────────────────────────── */
+.container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 max(4vw, 32px);
+}
+
+/* ── Shared ───────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.section {
+  padding: 72px 0 80px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.sectionHeading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.sectionSubtitle {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0 0 40px;
+}
+
+/* ── Problem ──────────────────────────────────────── */
+.problem {
+  padding: 72px 0 80px;
+}
+
+.problemHeading {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+  margin: 0 0 32px;
+}
+
+.problemBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 680px;
+}
+
+.problemBody p {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Principles ───────────────────────────────────── */
+.principlesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.principleCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.principleNum {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.principleTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px;
+}
+
+.principleBody {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Stack ────────────────────────────────────────── */
+.stackList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.stackRow {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  align-items: start;
+}
+
+.stackRow:last-child {
+  border-bottom: none;
+}
+
+.stackLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stackLayer {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+.stackTech {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12.5px;
+  color: #111827;
+  font-weight: 500;
+  background: none;
+}
+
+.stackReason {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+  padding-top: 2px;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .principlesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stackRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

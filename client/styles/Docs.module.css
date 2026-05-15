@@ -1,0 +1,198 @@
+/* ── Container ───────────────────────────────────── */
+.container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Docs layout: sidebar + content ─────────────── */
+.docsLayout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: calc(172px + max(4vw, 32px)) 1fr;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 max(4vw, 32px) 0 0;
+}
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  padding: 100px 24px 40px 0;
+  border-right: 1px solid #e5e7eb;
+  align-self: start;
+}
+
+/* hide scrollbar but keep scrollability */
+.sidebar::-webkit-scrollbar { display: none; }
+.sidebar { scrollbar-width: none; }
+
+.sidebarGroup {
+  margin-bottom: 28px;
+}
+
+.groupLabel {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.groupList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebarLink {
+  display: block;
+  font-size: 13.5px;
+  color: #6b7280;
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.12s ease;
+  line-height: 1.4;
+}
+
+.sidebarLink:hover {
+  color: #111827;
+}
+
+.sidebarLinkActive {
+  color: #111827;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* ── Content area ────────────────────────────────── */
+.content {
+  padding: 40px 0 80px 127px;
+  min-width: 0;
+}
+
+/* ── Doc sections ────────────────────────────────── */
+.docSection {
+  scroll-margin-top: 80px;
+  padding-bottom: 52px;
+  margin-bottom: 52px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.docSection:last-child {
+  border-bottom: none;
+}
+
+.docH1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.docH2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px;
+  line-height: 1.25;
+}
+
+.docSection p {
+  font-size: 14.5px;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0 0 14px;
+  max-width: 640px;
+}
+
+.docSection p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Lists ───────────────────────────────────────── */
+.orderedList,
+.unorderedList {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 640px;
+}
+
+.orderedList li,
+.unorderedList li {
+  font-size: 14.5px;
+  color: #374151;
+  line-height: 1.7;
+}
+
+/* ── Inline code ─────────────────────────────────── */
+.inlineCode {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12.5px;
+  background: #f3f4f6;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* ── Code block ──────────────────────────────────── */
+.codeBlock {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12.5px;
+  background: #111827;
+  color: #d1fae5;
+  border-radius: 10px;
+  padding: 20px 24px;
+  line-height: 1.75;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 16px 0;
+  max-width: 640px;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 720px) {
+  .docsLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 24px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .sidebarGroup {
+    margin-bottom: 0;
+  }
+
+  .content {
+    padding: 32px 0 60px;
+  }
+}
