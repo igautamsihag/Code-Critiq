@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f0ede8;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .layout {
+    background: #0e0e0e;
+  }
+}
