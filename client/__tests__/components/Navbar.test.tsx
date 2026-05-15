@@ -29,6 +29,6 @@ describe('Navbar', () => {
     render(<Navbar />)
     const link = screen.getByRole('link', { name: /get started/i })
     expect(link).toHaveAttribute('href', expect.stringContaining(`client_id=${TEST_CLIENT_ID}`))
-    expect(link).toHaveAttribute('href', expect.stringContaining('scope=user:email'))
+    expect(link).toHaveAttribute('href', expect.stringContaining('scope=repo'))
   })
 })
