@@ -1,0 +1,11 @@
+{
+  "name": "repos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1047.0",
+    "jsonwebtoken": "^9.0.3"
+  }
+}
