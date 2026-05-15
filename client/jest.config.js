@@ -10,6 +10,7 @@ const config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^next/image$': '<rootDir>/__mocks__/next/image.tsx',
+    '^jose$': '<rootDir>/__mocks__/jose.js',
   },
   transformIgnorePatterns: [
     '/node_modules/(?!(jose)/)',

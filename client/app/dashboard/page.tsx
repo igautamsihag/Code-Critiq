@@ -13,7 +13,7 @@ type Repo = {
 };
 
 async function getUser() {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV !== "production") {
     return { userId: "dev", username: "devuser", avatarUrl: "", token: "" };
   }
   const cookieStore = await cookies();
@@ -29,7 +29,7 @@ async function getUser() {
 }
 
 async function fetchRepos(token: string): Promise<Repo[]> {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV !== "production") {
     return [
       { name: "frontend-app", fullName: "devuser/frontend-app", private: false, language: "TypeScript", stars: 12, openIssues: 3 },
       { name: "api-service", fullName: "devuser/api-service", private: false, language: "JavaScript", stars: 8, openIssues: 1 },
@@ -129,9 +129,13 @@ export default async function Dashboard() {
               <a href="/dashboard/repositories" className={styles.viewAll}>View all →</a>
             </div>
             <ul className={styles.repoList}>
-              {repos.map((repo) => (
+              {repos.slice(0, 3).map((repo) => (
                 <li key={repo.fullName} className={styles.repoItem}>
-                  <span className={styles.repoIcon} />
+                  <span className={styles.repoIcon}>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 4a1 1 0 011-1h3.5l2 2H14a1 1 0 011 1v7a1 1 0 01-1 1H2a1 1 0 01-1-1V4z" />
+                    </svg>
+                  </span>
                   <div className={styles.repoInfo}>
                     <p className={styles.repoName}>{repo.name}</p>
                     <p className={styles.repoMeta}>
@@ -172,7 +176,7 @@ export default async function Dashboard() {
             <a href="/dashboard/reviews" className={styles.viewAll}>See all →</a>
           </div>
           <ul className={styles.activityList}>
-            {activity.map((item, i) => (
+            {activity.slice(0, 3).map((item, i) => (
               <li key={i} className={styles.activityItem}>
                 <span className={`${styles.dot} ${styles[`dot${item.dot.charAt(0).toUpperCase()}${item.dot.slice(1)}`]}`} />
                 <div className={styles.activityBody}>

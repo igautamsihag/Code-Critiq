@@ -19,6 +19,12 @@ Code Critiq streamlines the code review process by analyzing pull requests and g
 ---
 
 
+<div align="center">
+  <img src="client/public/dashboard-screenshot.png" alt="Code Critiq Dashboard" width="900" />
+</div>
+
+---
+
 ## Features
 
 - Automated code review on pull requests
@@ -31,6 +37,7 @@ Code Critiq streamlines the code review process by analyzing pull requests and g
 ## Live Demo
 
 **[https://code-critiq.vercel.app](https://code-critiq.vercel.app)**
+
 
 ---
 
