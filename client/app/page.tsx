@@ -7,7 +7,8 @@ import styles from "@/styles/page.module.css";
 export default function Home(){
 
   const id = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
-  const githubURL = `https://github.com/login/oauth/authorize?client_id=${id}&scope=user:email`;
+  const callbackUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/callback`;
+  const githubURL = `https://github.com/login/oauth/authorize?client_id=${id}&scope=repo,read:user,user:email,admin:repo_hook&redirect_uri=${encodeURIComponent(callbackUrl)}`;
   return(
     <div className={styles.container}>
     <Navbar />

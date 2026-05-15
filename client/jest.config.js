@@ -11,6 +11,9 @@ const config = {
     '^@/(.*)$': '<rootDir>/$1',
     '^next/image$': '<rootDir>/__mocks__/next/image.tsx',
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(jose)/)',
+  ],
 }
 
 module.exports = createJestConfig(config)
