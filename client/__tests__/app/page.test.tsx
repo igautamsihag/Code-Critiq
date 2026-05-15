@@ -29,6 +29,6 @@ describe('Home page', () => {
     render(<Home />)
     const link = screen.getByRole('link', { name: /continue with github/i })
     expect(link).toHaveAttribute('href', expect.stringContaining(`client_id=${TEST_CLIENT_ID}`))
-    expect(link).toHaveAttribute('href', expect.stringContaining('scope=user:email'))
+    expect(link).toHaveAttribute('href', expect.stringContaining('scope=repo'))
   })
 })
