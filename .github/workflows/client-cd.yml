@@ -4,27 +4,10 @@ on:
     workflow_run:
         workflows: ["Frontend CI Pipeline"]
         types: [completed]
-        branches: [staging, main]
+        branches: [main]
 
 
 jobs:
-    deploy-staging:
-        runs-on: ubuntu-latest
-        if: |
-            github.event.workflow_run.conclusion == 'success' &&
-            github.event.workflow_run.head_branch == 'staging'
-
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-
-            - name: Deploy to Vercel (preview)
-              working-directory: client
-              run: npx vercel@latest --token=${{ secrets.VERCEL_TOKEN }}
-              env:
-                VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-                VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
     deploy-production:
         runs-on: ubuntu-latest
         environment: production

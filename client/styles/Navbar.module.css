@@ -6,7 +6,7 @@
 }
 
 .logo{
-    vertical-align: top; 
+    vertical-align: top;
     display: inline-block;
     object-fit: cover;
     margin-top: 14px;
@@ -27,6 +27,11 @@
     text-decoration: none;
     cursor: pointer;
  }
+
+.navlink{
+    color: inherit;
+    text-decoration: none;
+}
 
 .githubbtn{
     display: flex;

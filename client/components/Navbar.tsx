@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "@/styles/Navbar.module.css"
 
 export default function Navbar(){
@@ -11,10 +12,10 @@ export default function Navbar(){
             <Image src="/CC-logo-transparent.png" width={200} height={35} alt="logo" className={styles.logo} loading="eager"/>
             <div className={styles.navlinks}>
                 <ul className={styles.navlist}>
-                    <li>Home</li>
-                    <li>Services</li>
-                    <li>About</li>
-                    <li>Docs</li>
+                    <li><Link href="/" className={styles.navlink}>Home</Link></li>
+                    <li><Link href="/services" className={styles.navlink}>Services</Link></li>
+                    <li><Link href="/about" className={styles.navlink}>About</Link></li>
+                    <li><Link href="/docs" className={styles.navlink}>Docs</Link></li>
                 </ul>
             </div>
             <a href={githubURL} className={styles.githubbtn}>
