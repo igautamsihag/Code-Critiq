@@ -19,8 +19,7 @@ export async function handler(event) {
     return {
       statusCode: 302,
       headers: {
-        Location: `${process.env.FRONTEND_URL}/dashboard`,
-        "Set-Cookie": `token=${token}; HttpOnly; Secure; SameSite=Lax; Max-Age=604800; Path=/`,
+        Location: `${process.env.FRONTEND_URL}/api/auth/callback?token=${token}`,
       },
       body: "",
     };
