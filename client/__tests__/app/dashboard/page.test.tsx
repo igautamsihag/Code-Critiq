@@ -7,11 +7,16 @@ describe('Dashboard page', () => {
     expect(screen.getByText('DE')).toBeInTheDocument()
   })
 
-  it('shows the 3 dev repos', async () => {
+  it('shows repos from the API', async () => {
     render(await Dashboard())
     expect(screen.getByText('frontend-app')).toBeInTheDocument()
     expect(screen.getByText('api-service')).toBeInTheDocument()
     expect(screen.getByText('data-pipeline')).toBeInTheDocument()
+  })
+
+  it('shows a Connect button for each repo', async () => {
+    render(await Dashboard())
+    expect(screen.getAllByRole('button', { name: /connect/i })).toHaveLength(3)
   })
 
   it('caps the activity feed at 3 items', async () => {

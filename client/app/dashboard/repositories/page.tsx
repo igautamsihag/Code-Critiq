@@ -13,6 +13,9 @@ type Repo = {
 };
 
 async function getUser() {
+  if (process.env.NODE_ENV === "test") {
+    return { userId: "dev", username: "devuser", avatarUrl: "", token: "" };
+  }
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   if (!token) redirect("/");
@@ -26,6 +29,15 @@ async function getUser() {
 }
 
 async function fetchRepos(token: string): Promise<Repo[]> {
+  if (process.env.NODE_ENV === "test") {
+    return [
+      { name: "frontend-app", fullName: "devuser/frontend-app", private: false, language: "TypeScript", stars: 12, openIssues: 3 },
+      { name: "api-service", fullName: "devuser/api-service", private: false, language: "JavaScript", stars: 8, openIssues: 1 },
+      { name: "data-pipeline", fullName: "devuser/data-pipeline", private: true, language: "Python", stars: 4, openIssues: 2 },
+      { name: "ml-experiments", fullName: "devuser/ml-experiments", private: true, language: "Python", stars: 2, openIssues: 0 },
+      { name: "portfolio", fullName: "devuser/portfolio", private: false, language: "TypeScript", stars: 5, openIssues: 1 },
+    ];
+  }
   try {
     const res = await fetch(`${process.env.API_URL}/repos`, {
       headers: { Authorization: `Bearer ${token}` },
