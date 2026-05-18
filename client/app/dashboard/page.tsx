@@ -13,9 +13,6 @@ type Repo = {
 };
 
 async function getUser() {
-  if (process.env.NODE_ENV !== "production") {
-    return { userId: "dev", username: "devuser", avatarUrl: "", token: "" };
-  }
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   if (!token) redirect("/");
@@ -29,14 +26,6 @@ async function getUser() {
 }
 
 async function fetchRepos(token: string): Promise<Repo[]> {
-  if (process.env.NODE_ENV !== "production") {
-    return [
-      { name: "frontend-app", fullName: "devuser/frontend-app", private: false, language: "TypeScript", stars: 12, openIssues: 3 },
-      { name: "api-service", fullName: "devuser/api-service", private: false, language: "JavaScript", stars: 8, openIssues: 1 },
-      { name: "data-pipeline", fullName: "devuser/data-pipeline", private: true, language: "Python", stars: 4, openIssues: 2 },
-    ];
-  }
-
   try {
     const res = await fetch(`${process.env.API_URL}/repos`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -142,6 +131,7 @@ export default async function Dashboard() {
                       {repo.language ?? "—"} · {repo.openIssues} open issue{repo.openIssues !== 1 ? "s" : ""}
                     </p>
                   </div>
+                  <button className={styles.connectBtn}>Connect</button>
                 </li>
               ))}
             </ul>

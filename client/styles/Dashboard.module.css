@@ -201,6 +201,24 @@
   margin: 0;
 }
 
+.connectBtn {
+  flex-shrink: 0;
+  padding: 0.4375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6366f1;
+  background: transparent;
+  border: 1.5px solid #6366f1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.connectBtn:hover {
+  background: #6366f1;
+  color: #ffffff;
+}
+
 .grade {
   width: 36px;
   height: 36px;
