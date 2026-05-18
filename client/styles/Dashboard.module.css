@@ -1,7 +1,8 @@
 .page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 
 .header {
@@ -41,10 +42,12 @@
 }
 
 .content {
+  flex: 1;
   padding: 0 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  overflow: hidden;
 }
 
 /* Stat cards */
@@ -163,13 +166,21 @@
 }
 
 .repoIcon {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
   border: 1.5px solid #c7d2fe;
   border-radius: 6px;
   background: #eef2ff;
   flex-shrink: 0;
+  color: #6366f1;
+}
+
+.repoIcon svg {
+  width: 15px;
+  height: 15px;
 }
 
 .repoInfo {
@@ -188,6 +199,24 @@
   font-size: 0.8125rem;
   color: #6b7280;
   margin: 0;
+}
+
+.connectBtn {
+  flex-shrink: 0;
+  padding: 0.4375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6366f1;
+  background: transparent;
+  border: 1.5px solid #6366f1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.connectBtn:hover {
+  background: #6366f1;
+  color: #ffffff;
 }
 
 .grade {

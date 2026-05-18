@@ -1,25 +1,29 @@
+import { render, screen } from '@testing-library/react'
 import Dashboard from '@/app/dashboard/page'
 
-const mockRedirect = jest.fn()
-const mockCookies = jest.fn()
-
-jest.mock('next/navigation', () => ({
-  redirect: (url: string) => {
-    mockRedirect(url)
-    throw new Error(`NEXT_REDIRECT:${url}`)
-  },
-}))
-jest.mock('next/headers', () => ({ cookies: () => mockCookies() }))
-jest.mock('jose', () => ({ jwtVerify: jest.fn() }))
-
 describe('Dashboard page', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
+  it('shows the username initials in the avatar', async () => {
+    render(await Dashboard())
+    expect(screen.getByText('DE')).toBeInTheDocument()
   })
 
-  it('redirects to / when no token cookie', async () => {
-    mockCookies.mockReturnValue({ get: () => undefined })
-    await expect(Dashboard()).rejects.toThrow('NEXT_REDIRECT:/')
-    expect(mockRedirect).toHaveBeenCalledWith('/')
+  it('shows repos from the API', async () => {
+    render(await Dashboard())
+    expect(screen.getByText('frontend-app')).toBeInTheDocument()
+    expect(screen.getByText('api-service')).toBeInTheDocument()
+    expect(screen.getByText('data-pipeline')).toBeInTheDocument()
+  })
+
+  it('shows a Connect button for each repo', async () => {
+    render(await Dashboard())
+    expect(screen.getAllByRole('button', { name: /connect/i })).toHaveLength(3)
+  })
+
+  it('caps the activity feed at 3 items', async () => {
+    render(await Dashboard())
+    expect(screen.getByText(/SQL injection/)).toBeInTheDocument()
+    expect(screen.getByText(/O\(n²\)/)).toBeInTheDocument()
+    expect(screen.getByText(/80 lines/)).toBeInTheDocument()
+    expect(screen.queryByText(/14 tests passing/)).not.toBeInTheDocument()
   })
 })

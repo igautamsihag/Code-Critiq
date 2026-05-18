@@ -48,7 +48,7 @@ export async function handler(event) {
   let ghData;
   try {
     const ghRes = await fetch(
-      "https://api.github.com/user/repos?sort=updated&per_page=20&visibility=all",
+      "https://api.github.com/user/repos?sort=updated&direction=desc&per_page=20&visibility=all",
       {
         headers: {
           Authorization: `Bearer ${githubToken}`,
