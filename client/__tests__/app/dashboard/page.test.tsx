@@ -14,9 +14,10 @@ describe('Dashboard page', () => {
     expect(screen.getByText('data-pipeline')).toBeInTheDocument()
   })
 
-  it('shows a Connect button for each repo', async () => {
+  it('shows Connect buttons for unconnected repos and Connected badge for connected repos', async () => {
     render(await Dashboard())
-    expect(screen.getAllByRole('button', { name: /connect/i })).toHaveLength(3)
+    expect(screen.getAllByRole('button', { name: /connect/i })).toHaveLength(2)
+    expect(screen.getByText('Connected')).toBeInTheDocument()
   })
 
   it('caps the activity feed at 3 items', async () => {

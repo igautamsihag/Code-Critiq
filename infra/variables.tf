@@ -32,3 +32,9 @@ variable "frontend_url" {
   type        = string
   default     = "https://your-vercel-app.vercel.app"
 }
+
+variable "webhook_secret" {
+  description = "HMAC secret GitHub uses to sign webhook payloads"
+  type        = string
+  sensitive   = true
+}

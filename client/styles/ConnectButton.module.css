@@ -1,0 +1,50 @@
+.btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.error {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn.error:hover:not(:disabled) {
+  background: #ef4444;
+  color: #fff;
+}
+
+.connected {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  color: #10b981;
+  border: 1px solid #10b981;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn {
+    border-color: var(--border);
+  }
+}

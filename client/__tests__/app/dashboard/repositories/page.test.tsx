@@ -16,9 +16,10 @@ describe('Repositories page', () => {
     expect(screen.getAllByText('Private')).toHaveLength(2)
   })
 
-  it('shows a Connect button for each repo', async () => {
+  it('shows Connect buttons for unconnected repos and Connected badge for connected repos', async () => {
     render(await RepositoriesPage())
-    expect(screen.getAllByRole('button', { name: /connect/i })).toHaveLength(5)
+    expect(screen.getAllByRole('button', { name: /connect/i })).toHaveLength(4)
+    expect(screen.getByText('Connected')).toBeInTheDocument()
   })
 
   it('shows repo count in the card header', async () => {
