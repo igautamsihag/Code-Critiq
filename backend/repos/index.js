@@ -1,4 +1,4 @@
-import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, GetItemCommand, QueryCommand } from "@aws-sdk/client-dynamodb";
 import jwt from "jsonwebtoken";
 
 const dynamo = new DynamoDBClient({});
@@ -67,6 +67,24 @@ export async function handler(event) {
     return reply(502, { error: "Failed to fetch repos from GitHub" });
   }
 
+  let connectedSet = new Set();
+  try {
+    const result = await dynamo.send(new QueryCommand({
+      TableName: process.env.DYNAMODB_TABLE,
+      KeyConditionExpression: "PK = :pk AND begins_with(SK, :prefix)",
+      ExpressionAttributeValues: {
+        ":pk": { S: `USER#${userId}` },
+        ":prefix": { S: "REPO#" },
+      },
+    }));
+    for (const item of result.Items ?? []) {
+      const fullName = item.SK?.S?.replace("REPO#", "");
+      if (fullName) connectedSet.add(fullName);
+    }
+  } catch (err) {
+    console.error("DynamoDB connected-repos error:", err);
+  }
+
   const repos = ghData.map((r) => ({
     name: r.name,
     fullName: r.full_name,
@@ -75,6 +93,7 @@ export async function handler(event) {
     stars: r.stargazers_count,
     openIssues: r.open_issues_count,
     updatedAt: r.updated_at,
+    connected: connectedSet.has(r.full_name),
   }));
 
   return reply(200, repos);
