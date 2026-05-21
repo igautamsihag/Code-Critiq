@@ -38,3 +38,9 @@ variable "webhook_secret" {
   type        = string
   sensitive   = true
 }
+
+variable "openai_api_key" {
+  description = "OpenAI API key used by the ai-agent Lambda for GPT-4o reviews"
+  type        = string
+  sensitive   = true
+}
