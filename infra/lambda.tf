@@ -93,8 +93,57 @@ resource "aws_lambda_function" "webhook" {
 
   environment {
     variables = {
+      DYNAMODB_TABLE         = aws_dynamodb_table.main.name
+      WEBHOOK_SECRET         = var.webhook_secret
+      AI_AGENT_FUNCTION_NAME = aws_lambda_function.ai_agent.function_name
+    }
+  }
+}
+
+data "archive_file" "reviews" {
+  type        = "zip"
+  source_dir  = "${path.module}/../backend/reviews"
+  output_path = "${path.module}/../backend/reviews.zip"
+  excludes    = ["node_modules/.cache"]
+}
+
+resource "aws_lambda_function" "reviews" {
+  function_name    = "${var.project}-reviews"
+  filename         = data.archive_file.reviews.output_path
+  source_code_hash = data.archive_file.reviews.output_base64sha256
+  role             = aws_iam_role.lambda_exec.arn
+  handler          = "index.handler"
+  runtime          = "nodejs22.x"
+  timeout          = 10
+
+  environment {
+    variables = {
       DYNAMODB_TABLE = aws_dynamodb_table.main.name
-      WEBHOOK_SECRET = var.webhook_secret
+      JWT_SECRET     = var.jwt_secret
+    }
+  }
+}
+
+data "archive_file" "ai_agent" {
+  type        = "zip"
+  source_dir  = "${path.module}/../ai-agent"
+  output_path = "${path.module}/../ai-agent.zip"
+  excludes    = ["node_modules/.cache"]
+}
+
+resource "aws_lambda_function" "ai_agent" {
+  function_name    = "${var.project}-ai-agent"
+  filename         = data.archive_file.ai_agent.output_path
+  source_code_hash = data.archive_file.ai_agent.output_base64sha256
+  role             = aws_iam_role.lambda_exec.arn
+  handler          = "index.handler"
+  runtime          = "nodejs22.x"
+  timeout          = 300
+
+  environment {
+    variables = {
+      DYNAMODB_TABLE = aws_dynamodb_table.main.name
+      OPENAI_API_KEY = var.openai_api_key
     }
   }
 }
