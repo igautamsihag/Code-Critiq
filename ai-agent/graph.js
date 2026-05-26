@@ -153,8 +153,6 @@ function truncateToLimit(files) {
   return result;
 }
 
-// Annotates each diff line with its new-file line number so the AI
-// can reference exact lines without guessing from hunk headers.
 export function formatDiffForPrompt(files) {
   return files.map((file) => {
     const lines = [`File: ${file.filename} [${file.status}]`];
@@ -187,8 +185,7 @@ export function formatDiffForPrompt(files) {
   }).join("\n\n---\n\n");
 }
 
-// Builds a set of "path:lineNum" for every line present in the diff.
-// Used to reject AI comments on lines that GitHub would refuse.
+
 export function getValidLines(files) {
   const valid = new Set();
   for (const file of files) {

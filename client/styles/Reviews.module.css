@@ -1,0 +1,204 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: #f0ede8;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.avatarCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #6366f1;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.content {
+  padding: 1.5rem 2rem 2rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e2d9;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.reviewCount {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.reviewList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f0ede8;
+}
+
+.reviewItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.reviewItem:first-child {
+  padding-top: 0;
+}
+
+.reviewIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 6px;
+  background: #eef2ff;
+  flex-shrink: 0;
+  color: #6366f1;
+  margin-top: 2px;
+}
+
+.reviewIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.reviewInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.reviewTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.reviewTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.repoBadge {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #6366f1;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 20px;
+  padding: 0.1em 0.6em;
+  flex-shrink: 0;
+}
+
+.reviewSummary {
+  font-size: 0.8375rem;
+  color: #4b5563;
+  margin: 0 0 0.25rem;
+  line-height: 1.5;
+}
+
+.reviewMeta {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.empty {
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.emptyText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.5rem;
+}
+
+.emptyHint {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header { background: #0e0e0e; }
+  .title { color: #f5f5f5; }
+
+  .card {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+  }
+
+  .cardTitle { color: #9ca3af; }
+  .reviewItem { border-bottom-color: #2a2a2a; }
+  .reviewTitle { color: #f5f5f5; }
+  .reviewSummary { color: #9ca3af; }
+
+  .reviewIcon {
+    background: #1e1b3a;
+    border-color: #3730a3;
+  }
+
+  .repoBadge {
+    background: #1e1b3a;
+    border-color: #3730a3;
+  }
+
+  .emptyText { color: #d1d5db; }
+}
